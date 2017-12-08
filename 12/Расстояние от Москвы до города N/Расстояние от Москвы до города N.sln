@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Расстояние от Москвы до города N", "Расстояние от Москвы до города N\Расстояние от Москвы до города N.csproj", "{E452D478-B8D4-4C1C-8E7C-646C40390459}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E452D478-B8D4-4C1C-8E7C-646C40390459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E452D478-B8D4-4C1C-8E7C-646C40390459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E452D478-B8D4-4C1C-8E7C-646C40390459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E452D478-B8D4-4C1C-8E7C-646C40390459}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E5401E49-7929-4D0C-9C02-EE8EA3415B93}
+	EndGlobalSection
+EndGlobal
