@@ -12,7 +12,6 @@ namespace ConsoleApplication1
             Console.WriteLine("Введите загаданное слово.");
             string Word = Console.ReadLine().ToLower();
             int Letter = 0;
-            int End = Word.Length - 1;
 
             for (int attempt = 0; attempt <= 9; attempt = attempt + 1)
             {
