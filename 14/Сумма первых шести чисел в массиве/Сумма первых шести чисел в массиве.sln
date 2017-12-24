@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Сумма первых шести чисел в массиве", "Сумма первых шести чисел в массиве\Сумма первых шести чисел в массиве.csproj", "{261060FD-9070-4EE9-9710-E99DED78917B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{261060FD-9070-4EE9-9710-E99DED78917B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{261060FD-9070-4EE9-9710-E99DED78917B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{261060FD-9070-4EE9-9710-E99DED78917B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{261060FD-9070-4EE9-9710-E99DED78917B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00795E24-9D60-4790-A267-5B0F4AC8DB0F}
+	EndGlobalSection
+EndGlobal
