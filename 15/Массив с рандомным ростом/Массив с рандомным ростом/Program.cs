@@ -11,12 +11,15 @@ namespace Массив_с_рандомным_ростом
         static void Main(string[] args)
         {
             Random rand = new Random();
-            int[] growth = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0};
+            int[] growth = {0};
             for(int n = 0; n < growth.Length; n = n + 1)
             {
-                int r = rand.Next(163, 190);
-                growth[n] = r;
-                Console.WriteLine(growth[n]);
+                for (int y = 0; y <= 12; y = y + 1)
+                {
+                    int r = rand.Next(163, 190);
+                    growth[n] = r;
+                    Console.WriteLine(growth[n]);
+                }
             }
             Console.ReadLine();
         }
