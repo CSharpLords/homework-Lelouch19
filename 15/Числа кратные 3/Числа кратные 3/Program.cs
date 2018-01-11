@@ -9,11 +9,11 @@ namespace Числа_кратные_3
     class Program
     {
         static void Main(string[] args)
-        {           
-            int[] Numbers = {0};
+        {
+            int x = 1;
+            int[] Numbers = new int[x];
             for(int n = 0; n < Numbers.Length; n = n + 1)
             {
-
                 for(int y = 60; y >= 10;y = y - 1)
                 {
 
@@ -22,6 +22,7 @@ namespace Числа_кратные_3
                     {
                         Numbers[n] = y;
                         Console.WriteLine(Numbers[n]);
+                        x = x + 1;
                     }
 
                 }
