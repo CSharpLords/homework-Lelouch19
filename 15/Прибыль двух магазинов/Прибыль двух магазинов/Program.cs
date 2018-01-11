@@ -19,6 +19,7 @@ namespace Прибыль_двух_магазинов
             for(int n = 0; n < FirstShop.Length; n = n + 1)
             {             
                     int r = rand.Next(0, 10000);
+                    FirstShop[n] = r;
                     sum1 = sum1 + r;            
             }
 
@@ -26,6 +27,7 @@ namespace Прибыль_двух_магазинов
             for(int y = 0; y < SecondShop.Length; y = y + 1)
             {            
                     int R = rand.Next(0, 100000);
+                    SecondShop[y] = R;
                     sum2 = sum2 + R;
             }
 
