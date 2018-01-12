@@ -10,20 +10,23 @@ namespace Числа_кратные_3
     {
         static void Main(string[] args)
         {
-            int[] Numbers = new int[1];
-            for(int n = 0; n < Numbers.Length; n = n + 1)
+            int[] Numbers = new int[17];
+            int a = 60;
+            for (int n = 0; n < Numbers.Length; n = n + 1)
             {
-                for(int y = 60; y >= 10;y = y - 1)
+                int Remainder = a % 3;
+                if (Remainder == 0)
                 {
-                    int Remainder = y % 3;
-                    if (Remainder == 0)
-                    {
-                        Numbers[n] = y;
-                        Console.WriteLine(Numbers[n]);
-                    }
-
+                    Numbers[n] = a;
+                    Console.WriteLine(Numbers[n]);
+                    a = a - 3;
                 }
+            }
+            Console.WriteLine();
 
+            for (int i = 0; i < Numbers.Length; i = i + 1)
+            {
+                Console.WriteLine("Numbers[" + i + "] = " + Numbers[i]);
             }
             Console.ReadLine();
         }
