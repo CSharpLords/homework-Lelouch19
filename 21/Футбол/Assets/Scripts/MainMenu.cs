@@ -14,10 +14,15 @@ public class MainMenu : MonoBehaviour {
 	{
 		Button startButton = GetComponent<Button> (); 
 		Button creditsButton = GetComponent<Button> (); 
-		Button exitButton = GetComponent<Button> (); 
+		Button exitButton = GetComponent<Button> ();
 
-		startButton.onClick.AddListener(LoadGame);
-		exitButton.onClick.AddListener(ExitGame);
+		//startButton.onClick.AddListener(LoadGame);
+		//exitButton.onClick.AddListener(ExitGame);
+		//creditsButton.onClick.AddListener(LoadCredits);
+	}
+	void LoadCredits()
+	{
+		SceneManager.LoadScene("Credits");
 	}
 	void LoadGame() 
 	{
