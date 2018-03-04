@@ -12,13 +12,9 @@ public class MainMenu : MonoBehaviour {
 
 	void Start () 
 	{
-		Button startButton = GetComponent<Button> (); 
-		Button creditsButton = GetComponent<Button> (); 
-		Button exitButton = GetComponent<Button> ();
-
-		//startButton.onClick.AddListener(LoadGame);
-		//exitButton.onClick.AddListener(ExitGame);
-		//creditsButton.onClick.AddListener(LoadCredits);
+		startButton.onClick.AddListener(LoadGame);
+		exitButton.onClick.AddListener(ExitGame);
+		creditsButton.onClick.AddListener(LoadCredits);
 	}
 	void LoadCredits()
 	{
