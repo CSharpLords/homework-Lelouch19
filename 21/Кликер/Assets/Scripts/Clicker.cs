@@ -16,23 +16,22 @@ public class Clicker : MonoBehaviour {
 	{
 		clickButton.onClick.AddListener(Score);
 	}
-	void Update()
-	{
-		time = time - Time.deltaTime;
-		timeField.text = ((int)time).ToString();
-		if(time < 0 )
-		{
-			End ();
-		}
-	}
 	void Score()
 	{
 		click = click + 1; 
 		scoreField.text = click.ToString();
 	}
+	void Update()
+	{
+		time = time - Time.deltaTime;
+		timeField.text = ((int)time).ToString();
+	    if (time < 0) 
+		{
+			End ();
+		}
+	}
 	void End()
 	{
 		SceneManager.LoadScene("End");
 	}
-
 }
