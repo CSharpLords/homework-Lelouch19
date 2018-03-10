@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Move : MonoBehaviour 
 {
-	public Transform[] cubs;
+	public Transform cub;
 	void Update () 
 	{
-		for(int x = 0; x < cubs.Length; x ++) //Передвижение объектов
-		{
-			Vector3 direction  = transform.position - cubs[x].position;
-			direction.Normalize ();
-			cubs[x].Translate(direction * 5 * Time.deltaTime);
-		}
-			
+		Vector3 direction  = cub.position - transform.position;
+		direction.Normalize ();
+		transform.Translate(direction * 5 * Time.deltaTime);
 	}
 }
