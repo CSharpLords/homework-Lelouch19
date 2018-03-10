@@ -25,13 +25,22 @@ public class Clicker : MonoBehaviour {
 	{
 		time = time - Time.deltaTime;
 		timeField.text = ((int)time).ToString();
-	    if (time < 0) 
+
+	    if (time < 0 && click >= 30) 
 		{
 			End ();
+		}
+		else if(time < 0 && click < 30)
+		{
+			Loss ();
 		}
 	}
 	void End()
 	{
 		SceneManager.LoadScene("End");
+	}
+	void Loss()
+	{
+		SceneManager.LoadScene ("Loss");
 	}
 }
