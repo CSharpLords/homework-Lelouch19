@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class Colour : MonoBehaviour {
 	
-	Renderer rend;
+	Renderer colour;
+	float a = 0;
 	float time = 0;
 
 	void Start () 
 	{
-		rend = GetComponent<Renderer>();
+		colour = GetComponent<Renderer>();
+		//colour.material.color =  Color.red;
 	}
-		
+
 	void Update () 
 	{
-
-		if (time > 5)
-		{
-			time = 0;
-			time = time + Time.deltaTime;
-			rend.material.color = Color.Lerp(Color.white, Color.red, time / 5);
-		}
 		time = time + Time.deltaTime;
-		rend.material.color = Color.Lerp(Color.red, Color.white, time / 5);
-	}
+		int seconds = (int)time;
+		int r = seconds % 1;
+		if (r == 0) 
+		{
+			a = a + 0.01F;
+			colour.material.color = new Color (1, a, a);
+			print (a);
+			if (a >= 1) 
+			{
+				a = 0;
+			}
+		}
 
+	}
 }
