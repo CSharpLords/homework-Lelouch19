@@ -11,5 +11,18 @@ namespace ElementCounter {
 
 			Console.ReadLine();
 		}
-	}
+        static int GetElementCount(int[] array, int quantity)
+        {
+            int x = 0;
+            for(int y = 0; y < array.Length; y++)
+            {
+                if(array[y] == quantity)
+                {
+                    x++;
+                }
+            }
+            return x;
+        }
+
+    }
 }
