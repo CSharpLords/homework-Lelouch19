@@ -4,9 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CustomPoint {
-	class Program {
-		static void Main(string[] args) {
+namespace CustomPoint
+{
+    public class Point
+    {
+        public int x;
+        public int y;
+        public string symbol;
+        public void Draw()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(symbol);
+        }
+    }
+	class Program
+    {
+		static void Main(string[] args)
+        {
 			Point point1 = new Point();
 			point1.x = 2;
 			point1.y = 5;
