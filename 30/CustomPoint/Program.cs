@@ -6,17 +6,6 @@ using System.Threading.Tasks;
 
 namespace CustomPoint
 {
-    public class Point
-    {
-        public int x;
-        public int y;
-        public string symbol;
-        public void Draw()
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(symbol);
-        }
-    }
 	class Program
     {
 		static void Main(string[] args)
