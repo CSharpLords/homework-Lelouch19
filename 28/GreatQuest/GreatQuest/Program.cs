@@ -9,8 +9,6 @@ namespace Quest
 {
     class Program
     {
-        //Историю Мимира и рассказы торговца ещё не доделал
-        //static int[] Stories = { 1, 2, 3, 4 };
         static bool sword = false;
         static bool armor = false;
         static bool horse = true;
@@ -34,157 +32,13 @@ namespace Quest
         static void Field()
         {
             Console.WriteLine("Вы находитесь на поле.Ваши варианты действий:");
-            Console.WriteLine("1.Отправиться в лавку Торговца.");
-            Console.WriteLine("2.Отправиться в лес.");
-            Console.WriteLine("3.Отправиться в деревню.");
-            Console.WriteLine("4.Послушать историю Хранителя поля.");
-            int answer = int.Parse(Console.ReadLine());
-            if (answer == 1)
-            {
-                Console.WriteLine();
-                Console.WriteLine("Добрый день!Меня зовут Альфред,и я Главный торговец этой страны!");
-                Thread.Sleep(500);
-                ShopTrader();
-            }
-            else if (answer == 2)
-            {
-                Forest();
-            }
-            else if (answer == 3)
-            {
-                Village();
-            }
-            else if (answer == 4)
-            {
-                Console.WriteLine();
-                Console.WriteLine("О,я рад,что ты пришёл послушать историю этого мира!");
-                Console.WriteLine("Я Мимир,хранитель поля!");
-                Story();
-            }
-
+            OptionsForAction();
         }
         static void ShopTrader()
         {
             Thread.Sleep(500);
             Console.WriteLine("Чтобы вы хотели сделать?");
-            Console.WriteLine();
-            Console.WriteLine("Варианты действий:");
-            Console.WriteLine("1.Продать коня.");
-            Console.WriteLine("2.Купить меч.");
-            Console.WriteLine("3.Купить броню.");
-            Console.WriteLine("4.Отправиться на поле.");
-            Console.WriteLine("5.Отправиться в лес.");
-            Console.WriteLine("6.Отправиться в деревню.");
-            Console.WriteLine("7.Купить аптечку.");
-            int answer2 = int.Parse(Console.ReadLine());
-            if (answer2 == 1)
-            {
-                if (horse == true)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Отличный конь!Поверьте,он попал в добрые руки!");
-                    money = money + 200;
-                    Console.WriteLine("В вашем кошельке - " + money + " нуток.");
-                    horse = false;
-                    ShopTrader();
-                }
-                else
-                {
-                    Console.WriteLine("Но у вас же нет коня...");
-                    ShopTrader();
-                }
-            }
-            else if (answer2 == 2)
-            {
-                if (money >= 150 && sword == false)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Вот ваш новый меч!Его ковали в самом Штормграде!");
-                    damage = damage + 50;
-                    money = money - 150;
-                    sword = true;
-                    Console.WriteLine("Ваш урон - " + damage);
-                    ShopTrader();
-                }
-                else
-                {
-                    if (sword == true)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("У вас уже есть меч...");
-                        ShopTrader();
-                    }
-                    else if (money < 150)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("У вас недостаточно денег...");
-                        ShopTrader();
-                    }
-                }
-            }
-            else if (answer2 == 3)
-            {
-                if (money >= 150 && armor == false)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Вот ваша броня!Её сковали сами гномы Чёрной горы!");
-                    health = health + 20;
-                    Console.WriteLine("Ваше здоровье - " + health);
-                    money = money - 150;
-                    armor = true;
-                    Console.WriteLine();
-                    ShopTrader();
-                }
-                else
-                {
-                    if (armor == true)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("У вас уже есть броня...");
-                        ShopTrader();
-                    }
-                    else if (money < 150)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("У вас недостаточно денег...");
-                        ShopTrader();
-                    }
-
-                }
-            }
-            else if (answer2 == 4)
-            {
-                Console.WriteLine();
-                Field();
-            }
-            else if (answer2 == 5)
-            {
-                Console.WriteLine();
-                Forest();
-            }
-            else if (answer2 == 6)
-            {
-                Console.WriteLine();
-                Village();
-            }
-            else if(answer2 == 7)
-            {
-                if(money >= 20)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Вот ваша аптечка!");
-                    health = health + 30;
-                    money = money - 20;
-                    Console.WriteLine("Ваше здоровье - " + health);
-                    ShopTrader();
-                }
-                else
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("У вас недостаточно денег...");
-                    ShopTrader();
-                }
-            }
+            OptionsForActionTrader();
         }
         static void Forest()
         {
@@ -198,18 +52,18 @@ namespace Quest
                 Console.WriteLine("2.Принять бой!");
                 Console.WriteLine("3.Бежать в лавку Торговца!");
                 Thread.Sleep(500);
-                int a = int.Parse(Console.ReadLine());
-                if (a == 1)
+                int answer10 = int.Parse(Console.ReadLine());
+                if (answer10 == 1)
                 {
                     Console.WriteLine();
                     Field();
                 }
-                else if (a == 2)
+                else if (answer10 == 2)
                 {
                     Console.WriteLine();
                     FightWithRobbery();
                 }
-                else if (a == 3)
+                else if (answer10 == 3)
                 {
                     Console.WriteLine();
                     Console.WriteLine("Что с вами случилось?Вы сбежали от мурлоков?");
@@ -222,25 +76,7 @@ namespace Quest
             {
                 Console.WriteLine();
                 Console.WriteLine("Лес безопасен...");
-                Console.WriteLine("1.Отправиться в деревню?");
-                Console.WriteLine("2.Отправиться на поле.");
-                Console.WriteLine("3.Сходить в лавку Торговца!");
-                int a = int.Parse(Console.ReadLine());
-                if (a == 1)
-                {
-                    Console.WriteLine();
-                    Village();
-                }
-                else if (a == 2)
-                {
-                    Console.WriteLine();
-                    Field();
-                }
-                else if (a == 3)
-                {
-                    Console.WriteLine();
-                    ShopTrader();
-                }
+                OptionsForAction();
             }
             Console.ReadLine();
         }
@@ -262,13 +98,13 @@ namespace Quest
                 {
                     Console.WriteLine("1.Вернуться на поле?");
                     Console.WriteLine("2.Бежать в лавку Торговца!");
-                    int a = int.Parse(Console.ReadLine());
-                    if (a == 1)
+                    int answerT = int.Parse(Console.ReadLine());
+                    if (answerT == 1)
                     {
                         Console.WriteLine();
                         Field();
                     }
-                    else if (a == 2)
+                    else if (answerT == 2)
                     {
                         Console.WriteLine();
                         ShopTrader();
@@ -294,27 +130,7 @@ namespace Quest
                 Console.WriteLine("Ваш урон - " + damage);
                 Console.WriteLine();
                 Console.WriteLine("Ваши варианты действий:");
-                Console.WriteLine("1.Отправиться в лавку Торговца.");
-                Console.WriteLine("2.Отправиться на поле.");
-                Console.WriteLine("3.Отправиться в деревню.");
-                int b = int.Parse(Console.ReadLine());
-                if(b == 1)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Вы избавились от разбойников?");
-                    Console.WriteLine("Отлично!");
-                    ShopTrader();
-                }
-                else if(b == 2)
-                {
-                    Console.WriteLine();
-                    Field();
-                }
-                else if(b == 3)
-                {
-                    Console.WriteLine();
-                    Village();
-                }
+                OptionsForAction();
 
             }
             if (robberHealth <= 0 && health <= 0)
@@ -338,13 +154,13 @@ namespace Quest
             Console.WriteLine("Варианты действий - ");
             Console.WriteLine("1.Бежать в лес...");
             Console.WriteLine("2.Принять бой!");
-            int a = int.Parse(Console.ReadLine());
-            if (a == 1)
+            int answer11 = int.Parse(Console.ReadLine());
+            if (answer11 == 1)
             {
                 Console.WriteLine();
                 Forest();
             }
-            else if (a == 2)
+            else if (answer11 == 2)
             {
                 Console.WriteLine();
                 FightWithAram();
@@ -466,6 +282,158 @@ namespace Quest
                 Console.WriteLine("Тогда ваше путешествие подощло к концу...");
                 Console.Clear();
                 Console.ReadLine();
+            }
+        }
+        static void OptionsForActionTrader()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Варианты действий:");
+            Console.WriteLine("1.Продать коня.");
+            Console.WriteLine("2.Купить меч.");
+            Console.WriteLine("3.Купить броню.");
+            Console.WriteLine("4.Отправиться на поле.");
+            Console.WriteLine("5.Отправиться в лес.");
+            Console.WriteLine("6.Отправиться в деревню.");
+            Console.WriteLine("7.Купить аптечку.");
+            int answer2 = int.Parse(Console.ReadLine());
+            if (answer2 == 1)
+            {
+                if (horse == true)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Отличный конь!Поверьте,он попал в добрые руки!");
+                    money = money + 200;
+                    Console.WriteLine("В вашем кошельке - " + money + " нуток.");
+                    horse = false;
+                    ShopTrader();
+                }
+                else
+                {
+                    Console.WriteLine("Но у вас же нет коня...");
+                    ShopTrader();
+                }
+            }
+            else if (answer2 == 2)
+            {
+                if (money >= 150 && sword == false)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Вот ваш новый меч!Его ковали в самом Штормграде!");
+                    damage = damage + 50;
+                    money = money - 150;
+                    sword = true;
+                    Console.WriteLine("Ваш урон - " + damage);
+                    ShopTrader();
+                }
+                else
+                {
+                    if (sword == true)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("У вас уже есть меч...");
+                        ShopTrader();
+                    }
+                    else if (money < 150)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("У вас недостаточно денег...");
+                        ShopTrader();
+                    }
+                }
+            }
+            else if (answer2 == 3)
+            {
+                if (money >= 150 && armor == false)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Вот ваша броня!Её сковали сами гномы Чёрной горы!");
+                    health = health + 20;
+                    Console.WriteLine("Ваше здоровье - " + health);
+                    money = money - 150;
+                    armor = true;
+                    Console.WriteLine();
+                    ShopTrader();
+                }
+                else
+                {
+                    if (armor == true)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("У вас уже есть броня...");
+                        ShopTrader();
+                    }
+                    else if (money < 150)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("У вас недостаточно денег...");
+                        ShopTrader();
+                    }
+
+                }
+            }
+            else if (answer2 == 4)
+            {
+                Console.WriteLine();
+                Field();
+            }
+            else if (answer2 == 5)
+            {
+                Console.WriteLine();
+                Forest();
+            }
+            else if (answer2 == 6)
+            {
+                Console.WriteLine();
+                Village();
+            }
+            else if (answer2 == 7)
+            {
+                if (money >= 20)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Вот ваша аптечка!");
+                    health = health + 30;
+                    money = money - 20;
+                    Console.WriteLine("Ваше здоровье - " + health);
+                    ShopTrader();
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("У вас недостаточно денег...");
+                    ShopTrader();
+                }
+            }
+        
+    }
+        static void OptionsForAction()
+        {
+            Console.WriteLine("1.Отправиться в лавку Торговца.");
+            Console.WriteLine("2.Отправиться в лес.");
+            Console.WriteLine("3.Отправиться в деревню.");
+            Console.WriteLine("4.Послушать историю Хранителя поля.");
+            int answer = int.Parse(Console.ReadLine());
+            if (answer == 1)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Добрый день!Меня зовут Альфред,и я Главный торговец этой страны!");
+                Thread.Sleep(500);
+                ShopTrader();
+            }
+            else if (answer == 2)
+            {
+                Forest();
+            }
+            else if (answer == 3)
+            {
+                Village();
+            }
+            else if (answer == 4)
+            {
+                Console.WriteLine();
+                Console.WriteLine("О,я рад,что ты пришёл послушать историю этого мира!");
+                Console.WriteLine("Я Мимир,хранитель поля!");
+                Story();
             }
         }
         static double GetReducedAttack(double health, double maxHealth, double maxAttack)
