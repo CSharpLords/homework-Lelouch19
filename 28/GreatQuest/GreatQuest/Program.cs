@@ -40,45 +40,42 @@ namespace Quest
             Console.WriteLine("Чтобы вы хотели сделать?");
             OptionsForActionTrader();
         }
-        static void Forest()
+        static void ForestWithoutRobber()
         {
-            if (robberInForest == true)
+            Console.WriteLine();
+            Console.WriteLine("Лес безопасен...");
+            OptionsForAction();
+        }
+        static void ForestWithRobber()
+        {
+            Console.WriteLine();
+            Console.WriteLine("О нет! На вас со спины напали разбойники-мурлоки!");
+            health = health - 30;
+            Console.WriteLine("Ваше здоровье - " + health);
+            Console.WriteLine("1.Вернуться на поле?");
+            Console.WriteLine("2.Принять бой!");
+            Console.WriteLine("3.Бежать в лавку Торговца!");
+            Thread.Sleep(500);
+            int answer = int.Parse(Console.ReadLine());
+            if (answer == 1)
             {
                 Console.WriteLine();
-                Console.WriteLine("О нет! На вас со спины напали разбойники-мурлоки!");
-                health = health - 30;
-                Console.WriteLine("Ваше здоровье - " + (health - 30));
-                Console.WriteLine("1.Вернуться на поле?");
-                Console.WriteLine("2.Принять бой!");
-                Console.WriteLine("3.Бежать в лавку Торговца!");
-                Thread.Sleep(500);
-                int answer10 = int.Parse(Console.ReadLine());
-                if (answer10 == 1)
-                {
-                    Console.WriteLine();
-                    Field();
-                }
-                else if (answer10 == 2)
-                {
-                    Console.WriteLine();
-                    FightWithRobbery();
-                }
-                else if (answer10 == 3)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Что с вами случилось?Вы сбежали от мурлоков?");
-                    Console.WriteLine("Последнее время их стало слишком много в нашем лесу...");
-                    Console.WriteLine("Я бы мог вам заплатить,если вы избавитесь от них!");
-                    ShopTrader();
-                }
+                Field();
             }
-            else
+            else if (answer == 2)
             {
                 Console.WriteLine();
-                Console.WriteLine("Лес безопасен...");
-                OptionsForAction();
+                FightWithRobbery();
             }
-            Console.ReadLine();
+            else if (answer == 3)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Что с вами случилось?Вы сбежали от мурлоков?");
+                Console.WriteLine("Последнее время их стало слишком много в нашем лесу...");
+                Console.WriteLine("Я бы мог вам заплатить,если вы избавитесь от них!");
+                ShopTrader();
+            }     
+        
         }
         static void FightWithRobbery()
         {
@@ -93,18 +90,18 @@ namespace Quest
                     break;
                 }
                 Console.WriteLine("Продолжаем бой?");
-                string answerF = Console.ReadLine().ToLower();
-                if(answerF == "нет")
+                string answer = Console.ReadLine().ToLower();
+                if(answer == "нет")
                 {
                     Console.WriteLine("1.Вернуться на поле?");
                     Console.WriteLine("2.Бежать в лавку Торговца!");
-                    int answerT = int.Parse(Console.ReadLine());
-                    if (answerT == 1)
+                    int answer2 = int.Parse(Console.ReadLine());
+                    if (answer2 == 1)
                     {
                         Console.WriteLine();
                         Field();
                     }
-                    else if (answerT == 2)
+                    else if (answer2 == 2)
                     {
                         Console.WriteLine();
                         ShopTrader();
@@ -152,15 +149,15 @@ namespace Quest
             health = health - 30;
             Console.WriteLine("Ваше здоровье - " + health);
             Console.WriteLine("Варианты действий - ");
-            Console.WriteLine("1.Бежать в лес...");
+            Console.WriteLine("1.Бежать...");
             Console.WriteLine("2.Принять бой!");
-            int answer11 = int.Parse(Console.ReadLine());
-            if (answer11 == 1)
+            int answer = int.Parse(Console.ReadLine());
+            if (answer == 1)
             {
                 Console.WriteLine();
-                Forest();
+                OptionsForAction();
             }
-            else if (answer11 == 2)
+            else if (answer == 2)
             {
                 Console.WriteLine();
                 FightWithAram();
@@ -183,9 +180,9 @@ namespace Quest
                 string answerF = Console.ReadLine().ToLower();
                 if (answerF == "нет")
                 {
-                    Console.WriteLine("Вы бежите в лес...");
+                    Console.WriteLine("Вы убегаете...");
                     Console.WriteLine();
-                    Forest();      
+                    OptionsForAction();      
                 }
             }
             if (health <= 0 && aramHealth > 0)
@@ -222,8 +219,8 @@ namespace Quest
             Console.WriteLine("Говорят,что он само порождение Тьмы...");
             Console.WriteLine("Ладно,не будем о нём...");
             Console.WriteLine("Хочешь узнать о нашей стране?");
-            string answer3 = Console.ReadLine().ToLower();
-            if (answer3 == "да")
+            string answer = Console.ReadLine().ToLower();
+            if (answer == "да")
             {
                 Console.WriteLine();
                 Console.WriteLine("Около века назад монгольский завоеватель,Чингин Тиран,вторгся в нашу страну...");
@@ -281,7 +278,99 @@ namespace Quest
                 Console.WriteLine();
                 Console.WriteLine("Тогда ваше путешествие подощло к концу...");
                 Console.Clear();
-                Console.ReadLine();
+            }
+        }
+        static void SellHorse()
+        {
+            if (horse == true)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Отличный конь!Поверьте,он попал в добрые руки!");
+                money = money + 200;
+                Console.WriteLine("В вашем кошельке - " + money + " нуток.");
+                horse = false;
+                ShopTrader();
+            }
+            else
+            {
+                Console.WriteLine("Но у вас же нет коня...");
+                ShopTrader();
+            }
+        }
+        static void BuySword()
+        {
+            if (money >= 150 && sword == false)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Вот ваш новый меч!Его ковали в самом Штормграде!");
+                damage = damage + 50;
+                money = money - 150;
+                sword = true;
+                Console.WriteLine("Ваш урон - " + damage);
+                ShopTrader();
+            }
+            else
+            {
+                if (sword == true)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("У вас уже есть меч...");
+                    ShopTrader();
+                }
+                else if (money < 150)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("У вас недостаточно денег...");
+                    ShopTrader();
+                }
+            }
+        }
+        static void BuyArmor()
+        {
+            if (money >= 150 && armor == false)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Вот ваша броня!Её сковали сами гномы Чёрной горы!");
+                health = health + 20;
+                Console.WriteLine("Ваше здоровье - " + health);
+                money = money - 150;
+                armor = true;
+                Console.WriteLine();
+                ShopTrader();
+            }
+            else
+            {
+                if (armor == true)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("У вас уже есть броня...");
+                    ShopTrader();
+                }
+                else if (money < 150)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("У вас недостаточно денег...");
+                    ShopTrader();
+                }
+
+            }
+        }
+        static void BuyAptechka()
+        {
+            if (money >= 20)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Вот ваша аптечка!");
+                health = health + 30;
+                money = money - 20;
+                Console.WriteLine("Ваше здоровье - " + health);
+                ShopTrader();
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("У вас недостаточно денег...");
+                ShopTrader();
             }
         }
         static void OptionsForActionTrader()
@@ -295,114 +384,43 @@ namespace Quest
             Console.WriteLine("5.Отправиться в лес.");
             Console.WriteLine("6.Отправиться в деревню.");
             Console.WriteLine("7.Купить аптечку.");
-            int answer2 = int.Parse(Console.ReadLine());
-            if (answer2 == 1)
+            int answer = int.Parse(Console.ReadLine());
+            if (answer == 1)
             {
-                if (horse == true)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Отличный конь!Поверьте,он попал в добрые руки!");
-                    money = money + 200;
-                    Console.WriteLine("В вашем кошельке - " + money + " нуток.");
-                    horse = false;
-                    ShopTrader();
-                }
-                else
-                {
-                    Console.WriteLine("Но у вас же нет коня...");
-                    ShopTrader();
-                }
+                SellHorse();
             }
-            else if (answer2 == 2)
+            else if (answer == 2)
             {
-                if (money >= 150 && sword == false)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Вот ваш новый меч!Его ковали в самом Штормграде!");
-                    damage = damage + 50;
-                    money = money - 150;
-                    sword = true;
-                    Console.WriteLine("Ваш урон - " + damage);
-                    ShopTrader();
-                }
-                else
-                {
-                    if (sword == true)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("У вас уже есть меч...");
-                        ShopTrader();
-                    }
-                    else if (money < 150)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("У вас недостаточно денег...");
-                        ShopTrader();
-                    }
-                }
+                BuySword();
             }
-            else if (answer2 == 3)
+            else if (answer == 3)
             {
-                if (money >= 150 && armor == false)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Вот ваша броня!Её сковали сами гномы Чёрной горы!");
-                    health = health + 20;
-                    Console.WriteLine("Ваше здоровье - " + health);
-                    money = money - 150;
-                    armor = true;
-                    Console.WriteLine();
-                    ShopTrader();
-                }
-                else
-                {
-                    if (armor == true)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("У вас уже есть броня...");
-                        ShopTrader();
-                    }
-                    else if (money < 150)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("У вас недостаточно денег...");
-                        ShopTrader();
-                    }
-
-                }
+                BuyArmor();
             }
-            else if (answer2 == 4)
+            else if (answer == 4)
             {
                 Console.WriteLine();
                 Field();
             }
-            else if (answer2 == 5)
+            else if (answer == 5)
             {
-                Console.WriteLine();
-                Forest();
+                if (robberInForest == true)
+                {
+                    ForestWithRobber();
+                }
+                else
+                {
+                    ForestWithoutRobber();
+                }
             }
-            else if (answer2 == 6)
+            else if (answer == 6)
             {
                 Console.WriteLine();
                 Village();
             }
-            else if (answer2 == 7)
+            else if (answer == 7)
             {
-                if (money >= 20)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Вот ваша аптечка!");
-                    health = health + 30;
-                    money = money - 20;
-                    Console.WriteLine("Ваше здоровье - " + health);
-                    ShopTrader();
-                }
-                else
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("У вас недостаточно денег...");
-                    ShopTrader();
-                }
+                BuyAptechka();
             }
         
     }
@@ -422,7 +440,15 @@ namespace Quest
             }
             else if (answer == 2)
             {
-                Forest();
+                if(robberInForest == true)
+                {
+                    ForestWithRobber();
+                }
+                else
+                {
+                    ForestWithoutRobber();
+                }
+               
             }
             else if (answer == 3)
             {
