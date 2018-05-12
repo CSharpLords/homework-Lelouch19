@@ -41,11 +41,14 @@
                 }
             }
 
-            if(score < kot.score)
+            if (score < kot.score)
             {
-                 kot.name = name;
+                return kot.name;
             }
-            return name;
+            else
+            {
+                return name;
+            }
         }
 	}
 }
