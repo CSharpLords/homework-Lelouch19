@@ -4,15 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RobotFactory {
-	class Robot {
+namespace RobotFactory 
+{
+	class Robot 
+    {
+        int iD = 0;
 		private static int lastID = 0;
-		public Robot() {
-			lastID = lastID + 1;
+		public Robot() 
+        {  
+            iD = lastID;
+			lastID ++;
 		}
 
-		public int GetID() {
-			return lastID;
+		public int GetID()
+        {
+			return iD;
 		}
 	}
 }
